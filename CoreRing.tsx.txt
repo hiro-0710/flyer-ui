@@ -1,0 +1,31 @@
+import clsx from "clsx";
+
+type Props = {
+  connected: boolean;
+};
+
+export default function CoreRing({ connected }: Props) {
+  return (
+    <div className="relative flex items-center justify-center">
+      <div
+        className={clsx(
+          "w-40 h-40 rounded-full border",
+          "border-flyerAccentSoft",
+          "flex items-center justify-center",
+          "transition-colors duration-500"
+        )}
+      >
+        <div
+          className={clsx(
+            "w-24 h-24 rounded-full",
+            "bg-gradient-to-br from-flyerAccent/40 to-transparent",
+            connected && "animate-pulse-soft"
+          )}
+        />
+      </div>
+      <div className="absolute -bottom-6 text-xs text-flyerTextSoft">
+        {connected ? "link: core online" : "link: connecting..."}
+      </div>
+    </div>
+  );
+}
